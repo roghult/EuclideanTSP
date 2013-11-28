@@ -1,4 +1,4 @@
 
 public interface TSPSolver {
-	int[] findPath(double[][] points);
+	int[] findPath(Graph g);
 }

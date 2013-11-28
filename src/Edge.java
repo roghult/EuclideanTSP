@@ -1,54 +1,63 @@
 public class Edge implements Comparable<Edge> {
 
-	private double p1x;
-	private double p1y;
-	private double p2x;
-	private double p2y;
+	private Node node1;
+	private Node node2;
+	public Node getNode1() {
+		return node1;
+	}
+
+	public Node getNode2() {
+		return node2;
+	}
+
 	private int distance;
-	private int p1index;
-	private int p2index;
 
-	public Edge(double p1x, double p1y, double p2x, double p2y, int p1index, int p2index) {
+	public Edge(Node n1, Node n2) {
 		// TODO: are x and y ever needed for the points? could these be removed?
-		this.p1x = p1x;
-		this.p1y = p1y;
-		this.p2x = p2x;
-		this.p2y = p2y;
-		this.p1index = p1index;
-		this.p2index = p2index;
-		
+		node1 = n1;
+		node2 = n2;
+
 		// Euclidean distance
-		distance = (int) (Math.sqrt(((p1x - p2x) * (p1x - p2x))
-				+ ((p1y - p2y) * (p1y - p2y))) + 0.5d);
-	}
-
-	public int getP1index() {
-		return p1index;
-	}
-
-	public int getP2index() {
-		return p2index;
+		distance = (int) (Math.sqrt(((node1.getX() - node2.getX()) * (node1.getX() - node2.getX()))
+				+ ((node1.getY() - node2.getY()) * (node1.getY() - node2.getY()))) + 0.5d);
 	}
 
 	public double getDistance() {
 		return distance;
 	}
 
-//	public double getP1x() {
-//		return p1x;
-//	}
-//
-//	public double getP1y() {
-//		return p1y;
-//	}
-//
-//	public double getP2x() {
-//		return p2x;
-//	}
-//
-//	public double getP2y() {
-//		return p2y;
-//	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((node1 == null) ? 0 : node1.hashCode());
+		result = prime * result + ((node2 == null) ? 0 : node2.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Edge other = (Edge) obj;
+		
+		if(node1.equals(other.node1)) {
+			if(node2.equals(other.node2)) {
+				return true;
+			}
+		}
+		if(node1.equals(other.node2)) {
+			if(node2.equals(other.node1)) {
+				return true;
+			}
+		}
+		
+		return false;
+	}
 
 	@Override
 	public int compareTo(Edge e) {
