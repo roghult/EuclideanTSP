@@ -2,7 +2,7 @@ import java.util.HashSet;
 
 public class Graph {
 	private Node[] nodes;
-	private HashSet<Edge> edges;
+	protected HashSet<Edge> edges;
 
 	public Graph(Node[] nodes) {
 		this.nodes = nodes;

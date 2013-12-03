@@ -2,14 +2,6 @@ public class Edge implements Comparable<Edge> {
 
 	private Node node1;
 	private Node node2;
-	public Node getNode1() {
-		return node1;
-	}
-
-	public Node getNode2() {
-		return node2;
-	}
-
 	private int distance;
 
 	public Edge(Node n1, Node n2) {
@@ -24,6 +16,14 @@ public class Edge implements Comparable<Edge> {
 
 	public double getDistance() {
 		return distance;
+	}
+	
+	public Node getNode1() {
+		return node1;
+	}
+
+	public Node getNode2() {
+		return node2;
 	}
 
 	@Override

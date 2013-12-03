@@ -21,7 +21,7 @@ public class Christofides implements TSPSolver {
 		/*
 		 * 3. Combine the edges of M and T to form a multigraph H.
 		 */
-		
+		MultiGraph H = combine(T, M);
 
 		/*
 		 * 4. Form an Eulerian circuit in H (H is Eulerian because it is
@@ -80,6 +80,14 @@ public class Christofides implements TSPSolver {
 			}
 		}
 		return nodes.toArray(new Node[0]);
+	}
+	
+	public MultiGraph combine(Graph g, HashSet<Edge> edges) {
+		MultiGraph multiGraph = new MultiGraph(g);
+		for(Edge e : edges) {
+			multiGraph.addEdge(e);
+		}
+		return multiGraph;
 	}
 
 }
