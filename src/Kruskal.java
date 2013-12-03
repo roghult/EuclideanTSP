@@ -3,12 +3,13 @@ import java.util.PriorityQueue;
 
 public class Kruskal {
 
-	public static HashSet<Edge> getMST(Graph g) {
+	public static Graph getMST(Graph g) {
 		int N = g.count();
 		HashSet<Edge> mst = new HashSet<Edge>();
 		PriorityQueue<Edge> pq = new PriorityQueue<Edge>();
-		
-		for(Edge e : g.getEdges()) {
+		HashSet<Node> nodes = new HashSet<Node>(N);
+
+		for (Edge e : g.getEdges()) {
 			pq.add(e);
 		}
 
@@ -21,10 +22,16 @@ public class Kruskal {
 				// if a cycle isn't formed
 				uf.union(point1, point2);
 				mst.add(e);
+				nodes.add(e.getNode1());
+				nodes.add(e.getNode2());
 			}
 		}
 
-		return mst;
+		Graph tree = new Graph(nodes.toArray(new Node[0]));
+		for (Edge e : mst) {
+			tree.addEdge(e);
+		}
+		return tree;
 	}
 
 }

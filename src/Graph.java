@@ -17,6 +17,10 @@ public class Graph {
 		}
 	}
 	
+	public void addEdge(Edge e) {
+		edges.add(e);
+	}
+	
 	public int count() {
 		return nodes.length;
 	}
@@ -28,5 +32,5 @@ public class Graph {
 	public HashSet<Edge> getEdges() {
 		return edges;
 	}
-	
+
 }

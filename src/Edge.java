@@ -63,5 +63,10 @@ public class Edge implements Comparable<Edge> {
 	public int compareTo(Edge e) {
 		return distance - e.distance;
 	}
+	
+	@Override
+	public String toString() {
+		return node1.toString() + " --- " + node2.toString();
+	}
 
 }
